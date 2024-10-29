@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-cart
+  namespace: beautybay-cart
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-cart
+  template:
+    metadata:
+      labels:
+        app: nginx-cart
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:  # Mount the ConfigMap file as the NGINX default config
+            - name: nginx-config
+              mountPath: /etc/nginx/conf.d/default.conf
+              subPath: nginx-cart.conf
+      volumes:  # Define the ConfigMap volume
+        - name: nginx-config
+          configMap:
+            name: nginx-cart-config

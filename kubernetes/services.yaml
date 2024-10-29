@@ -1,0 +1,89 @@
+# MySQL Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+  namespace: beautybay-infrastructure
+spec:
+  selector:
+    app: mysql
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+  type: ClusterIP
+---
+# MongoDB Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-service
+  namespace: beautybay-infrastructure # Added namespace
+spec:
+  selector:
+    app: mongo
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017
+  type: ClusterIP
+---
+# Redis Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-service
+  namespace: beautybay-infrastructure # Added namespace
+spec:
+  selector:
+    app: redis
+  ports:
+    - protocol: TCP
+      port: 6379
+      targetPort: 6379
+  type: ClusterIP
+---
+# Product Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-service
+  namespace: beautybay-product
+spec:
+  selector:
+    app: product-service
+  ports:
+    - protocol: TCP
+      port: 9000
+      targetPort: 9000
+  type: NodePort  # Changed from LoadBalancer to NodePort for local setup
+---
+# Cart Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: cart-service
+  namespace: beautybay-cart
+spec:
+  selector:
+    app: cart-service
+  ports:
+    - protocol: TCP
+      port: 9000
+      targetPort: 9000
+  type: NodePort  # Changed from LoadBalancer to NodePort for local setup
+---
+# Order Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-service
+  namespace: beautybay-order
+spec:
+  selector:
+    app: order-service
+  ports:
+    - protocol: TCP
+      port: 9000
+      targetPort: 9000
+  type: NodePort  # Changed from LoadBalancer to NodePort for local setup

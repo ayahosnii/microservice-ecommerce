@@ -1,0 +1,20 @@
+_format_version: "1.1"
+services:
+  - name: cart-service
+    url: http://cart-service:9000
+    routes:
+      - name: cart-route
+        paths:
+          - /cart
+  - name: order-service
+    url: http://order-service:9000
+    routes:
+      - name: order-route
+        paths:
+          - /order
+  - name: product-service
+    url: http://product-service:9000
+    routes:
+      - name: product-route
+        paths:
+          - /product

@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: try-nginx-ingress
+  annotations:
+    konghq.com/strip-path: "true"
+spec:
+  rules:
+    - host: try.locale
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: nginx
+                port:
+                  number: 80

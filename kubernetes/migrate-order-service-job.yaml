@@ -1,0 +1,44 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migrate-order-service
+spec:
+  template:
+    spec:
+      containers:
+        - name: migrate
+          image: tutorialaya/beautybay-order-service:latest
+          command: ["php", "artisan", "migrate", "--force"]
+          env:
+            - name: DB_CONNECTION
+              valueFrom:
+                configMapKeyRef:
+                  name: laravel-config
+                  key: DB_CONNECTION
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: laravel-config
+                  key: DB_HOST
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: laravel-config
+                  key: DB_PORT
+            - name: DB_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: laravel-config
+                  key: DB_DATABASE
+            - name: DB_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: laravel-config
+                  key: DB_USERNAME
+            - name: DB_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: laravel-config
+                  key: DB_PASSWORD
+      restartPolicy: Never
+  backoffLimit: 4

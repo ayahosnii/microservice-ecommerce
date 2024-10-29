@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: laravel-debug
+  namespace: beautybay-cart
+spec:
+  containers:
+    - name: debug-container
+      image: tutorialaya/beautybay-cart-service:latest
+      command: ["sleep", "3600"]

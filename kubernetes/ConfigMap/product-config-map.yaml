@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: laravel-config
+  namespace: beautybay-product
+data:
+  APP_ENV: "local"
+  APP_DEBUG: "true"
+  REDIS_HOST: "redis-service"
+  DB_CONNECTION: "mysql"
+  DB_HOST: "mysql-service.default.svc.cluster.local"
+  DB_PORT: "3306"
+  DB_DATABASE: "beautybay_db"
+  DB_USERNAME: "beautybay"
+  DB_PASSWORD: "beautybaypassword"
+  MONGO_HOST: "mongo-service"
+  MONGO_PORT: "27017"
+  MONGO_USERNAME: "root"
+  MONGO_PASSWORD: "rootpassword"

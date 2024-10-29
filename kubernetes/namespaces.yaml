@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: beautybay-cart
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: beautybay-order
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: beautybay-product
