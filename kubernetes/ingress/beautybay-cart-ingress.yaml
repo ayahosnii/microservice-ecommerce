@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cart-ingress
+  namespace: beautybay-cart
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  labels:
+    app: cart-service
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: beautybay.local
+      http:
+        paths:
+          - path: /cart
+            pathType: Prefix
+            backend:
+              service:
+                name: cart-service
+                port:
+                  number: 9000
