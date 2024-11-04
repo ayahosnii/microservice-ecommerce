@@ -1,0 +1,20 @@
+_format_version: "2.1"
+services:
+  - name: order-service
+    url: "http://192.168.49.2:30404"
+    routes:
+      - name: order-route
+        paths:
+          - /order
+  - name: cart-service
+    url: "http://192.168.49.2:31001"
+    routes:
+      - name: cart-route
+        paths:
+          - /cart
+  - name: product-service
+    url: "http://192.168.49.2:30934"
+    routes:
+      - name: product-route
+        paths:
+          - /product
