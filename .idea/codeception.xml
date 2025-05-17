@@ -9,9 +9,6 @@
         <Configuration>
           <option name="path" value="$PROJECT_DIR$/product-service/tests" />
         </Configuration>
-        <Configuration>
-          <option name="path" value="$PROJECT_DIR$/cart-service/tests" />
-        </Configuration>
       </list>
     </option>
   </component>

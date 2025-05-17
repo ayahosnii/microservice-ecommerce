@@ -6,9 +6,12 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "google/protobuf": "^4.31",
+        "grpc/grpc": "^1.57",
         "jenssegers/mongodb": "^5.1",
         "laravel/framework": "^11.9",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "ext-grpc": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
