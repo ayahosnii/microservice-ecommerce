@@ -1,9 +1,7 @@
 <?php
 // GENERATED CODE -- DO NOT EDIT!
 
-namespace App\Grpc\Generated\App;
-
-use App\Grpc;
+namespace App\Grpc\Generated;
 
 /**
  */
@@ -19,16 +17,16 @@ class GreeterClient extends \Grpc\BaseStub {
     }
 
     /**
-     * @param \App\Grpc\Generated\App\HelloRequest $argument input argument
+     * @param \App\Grpc\Generated\HelloRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
      * @return \Grpc\UnaryCall
      */
-    public function SayHello(Grpc\Generated\App\HelloRequest $argument,
-                                                             $metadata = [], $options = []) {
+    public function SayHello(\App\Grpc\Generated\HelloRequest $argument,
+      $metadata = [], $options = []) {
         return $this->_simpleRequest('/app.Greeter/SayHello',
         $argument,
-        ['\App\Grpc\Generated\App\HelloReply', 'decode'],
+        ['\App\Grpc\Generated\HelloReply', 'decode'],
         $metadata, $options);
     }
 

@@ -1,9 +1,11 @@
 syntax = "proto3";
 
-package app;
+package app; // 👈 Match Node.js exactly
+
+option php_namespace = "App\\Grpc\\Generated";
 
 service Greeter {
-  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc SayHello (HelloRequest) returns (HelloReply);
 }
 
 message HelloRequest {

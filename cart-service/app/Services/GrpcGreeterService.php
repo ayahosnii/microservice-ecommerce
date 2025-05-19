@@ -3,25 +3,27 @@
 namespace App\Services;
 
 
-use App\Grpc\Generated\App\GreeterClient;
-use App\Grpc\Generated\App\HelloRequest;
+use App\Grpc\Generated\GreeterClient;
+use App\Grpc\Generated\HelloRequest;
 use Grpc\ChannelCredentials;
 
 class GrpcGreeterService
 {
-    public function sayHello(string $name): string
+    public function sayHelloToProduct(): string
     {
-        $client = new GreeterClient('localhost:50051', [
-            'credentials' => ChannelCredentials::createInsecure()
-        ]);
+        $client = new \App\Grpc\Generated\GreeterClient(
+            '127.0.0.1:50051',
+            ['credentials' => \Grpc\ChannelCredentials::createInsecure()]
+        );
+
 
         $request = new HelloRequest();
-        $request->setName($name);
+        $request->setName('Ahmed');
 
         [$response, $status] = $client->SayHello($request)->wait();
 
         if ($status->code !== \Grpc\STATUS_OK) {
-            throw new \Exception("gRPC error: {$status->details}");
+            throw new \Exception("gRPC Error: {$status->details}");
         }
 
         return $response->getMessage();

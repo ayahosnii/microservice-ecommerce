@@ -8,5 +8,5 @@ Route::get('/', function () {
 });
 
 Route::get('/grpc-test', function () {
-    return app(\App\Services\GrpcGreeterService::class)->sayHello('Ahmed');
+    return app(\App\Services\GrpcGreeterService::class)->sayHelloToProduct();
 });
