@@ -23,6 +23,8 @@
       <sourceFolder url="file://$MODULE_DIR$/product-service/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/cart-service/app/Grpc/Generated/GPBMetadata" isTestSource="false" packagePrefix="GPBMetadata\" />
+      <sourceFolder url="file://$MODULE_DIR$/cart-service/spec" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/product-service/vendor/brick/math" />
       <excludeFolder url="file://$MODULE_DIR$/product-service/vendor/carbonphp/carbon-doctrine-types" />
       <excludeFolder url="file://$MODULE_DIR$/product-service/vendor/composer" />

@@ -160,7 +160,7 @@ microservice-ecommerce/
 │       └── proto/
 │           └── Greeter.proto
 ├── product-service/        # Node.js gRPC server
-│   ├── server.cjs
+│   ├── server.js
 │   └── proto/
 │       └── Greeter.proto
 ```
@@ -258,7 +258,7 @@ Route::get('/grpc-test', function () {
 
 ## 🚀 Run Node.js gRPC Server
 
-**server.cjs** example:
+**server.js** example:
 
 ```js
 const grpc = require('@grpc/grpc-js');
@@ -291,7 +291,7 @@ server.bindAsync('0.0.0.0:50051', grpc.ServerCredentials.createInsecure(), () =>
 Run it:
 
 ```bash
-node server.cjs
+node server.js
 ```
 
 ---

@@ -7,6 +7,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/grpc-test', function () {
-    return app(\App\Services\GrpcGreeterService::class)->sayHelloToProduct();
-});
+Route::get('/grpc-test', [GrpcTestController::class, 'index']);

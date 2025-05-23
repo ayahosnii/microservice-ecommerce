@@ -2,28 +2,32 @@
 
 namespace App\Services;
 
-
 use App\Grpc\Generated\GreeterClient;
 use App\Grpc\Generated\HelloRequest;
 use Grpc\ChannelCredentials;
+use const Grpc\STATUS_OK;
 
 class GrpcGreeterService
 {
-    public function sayHelloToProduct(): string
+    protected GreeterClient $client;
+
+    public function __construct()
     {
-        $client = new \App\Grpc\Generated\GreeterClient(
-            '127.0.0.1:50051',
-            ['credentials' => \Grpc\ChannelCredentials::createInsecure()]
-        );
+        $this->client = new GreeterClient('127.0.0.1:50051', [
+            'credentials' => ChannelCredentials::createInsecure(),
+        ]);
+    }
 
-
+    public function sayHello(string $name, string $email): string
+    {
         $request = new HelloRequest();
-        $request->setName('Ahmed');
+        $request->setName($name);
+        $request->setEmail($email);
 
-        [$response, $status] = $client->SayHello($request)->wait();
+        [$response, $status] = $this->client->SayHello($request)->wait();
 
-        if ($status->code !== \Grpc\STATUS_OK) {
-            throw new \Exception("gRPC Error: {$status->details}");
+        if ($status->code !== STATUS_OK) {
+            throw new \RuntimeException("gRPC Error: {$status->details}");
         }
 
         return $response->getMessage();

@@ -1,17 +1,32 @@
+// Syntax version for Protocol Buffers — use proto3 for modern features and support
 syntax = "proto3";
 
-package app; // 👈 Match Node.js exactly
 
+// Defines the package name for this proto file.
+// This controls how the generated classes are grouped/nested in most languages.
+// In Node.js, the generated service will be accessed like: grpcObject.helloworld.Greeter
+// In PHP, it influences the full method name as: /helloworld.Greeter/SayHello (unless overridden by `php_namespace`)
+
+package helloworld;
+
+// This option sets the PHP namespace for generated PHP classes
+// Helps match PSR-4 structure in Laravel (e.g., App\Grpc\Generated)
 option php_namespace = "App\\Grpc\\Generated";
 
+// Define a gRPC service called "Greeter"
 service Greeter {
   rpc SayHello (HelloRequest) returns (HelloReply);
 }
 
+// Define the message that will be sent from client to server
 message HelloRequest {
+  // 'name' is a string field with ID 1
   string name = 1;
+  string email = 2;
 }
 
+// Define the message that will be sent from server to client in response
 message HelloReply {
+  // 'message' is a string field with ID 1
   string message = 1;
 }

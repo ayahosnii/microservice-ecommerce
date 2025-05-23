@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 
 class GrpcTestController extends Controller
 {
-    public function greet()
+    public function index(GrpcGreeterService $grpc)
     {
-        $service = new GrpcGreeterService();
-        $message = $service->sayHello('Ahmed');
-
-        return response()->json(['message' => $message]);
+        try {
+            $message = $grpc->sayHello('Aya', 'aya@gmail.com');
+            return response()->json(['message' => $message]);
+        } catch (\Throwable $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 }
